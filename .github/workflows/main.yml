@@ -2,7 +2,7 @@ on:
   push:
     branches:
       - main
-name: 🚀 Výsadek na produkci
+name: ✈️ Výsadek na produkci
 jobs:
   deploy:
     name: Vysazení
