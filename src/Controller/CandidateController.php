@@ -43,7 +43,7 @@ class CandidateController extends BaseController
         $errors = $validator->validate($candidate);
 
         if (count($errors) > 0) {
-            throw new BadRequestHttpException($errors[0]->getMessage());
+            return $this->sendJson(["message" => $errors[0]->getMessage()], 400);
         }
 
         $this->entityManager->persist($candidate);
