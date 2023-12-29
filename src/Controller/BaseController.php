@@ -7,11 +7,9 @@ use Symfony\Component\HttpFoundation\Response;
 
 class BaseController extends AbstractController
 {
-    protected const DEFAULT_HEADERS = ['Access-Control-Allow-Origin' => '*'];
-
     protected function sendJson(mixed $json, int $statusCode = 200): Response
     {
-        return $this->json($json, $statusCode, self::DEFAULT_HEADERS);
+        return $this->json($json, $statusCode);
     }
 
     protected function loadData(string $filename, bool $splitLines = false): array|string

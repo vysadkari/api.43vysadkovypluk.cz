@@ -1,6 +1,8 @@
-# Put parameters here that don't need to change on each machine where the app is deployed
-# https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
+  app.allowedOrigins:
+    - http://localhost:4321
+    - https://test.43vysadkovypluk.cz
+    - https://43vysadkovypluk.cz
 
 services:
   _defaults:
@@ -21,3 +23,7 @@ services:
   App\EventListener\HttpExceptionListener:
     tags:
       - { name: kernel.event_listener, event: kernel.exception }
+
+  App\EventListener\AccessControlAllowOriginListener:
+    arguments:
+      $allowedOrigins: "%app.allowedOrigins%"
