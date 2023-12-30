@@ -43,8 +43,10 @@ jobs:
           response=$(curl -s -H "Authorization: Bearer ${{ secrets.SYSTEM_ENDPOINT_TOKEN }}" https://api.43vysadkovypluk.cz/system/clear-cache)
           message=$(echo $response | jq -r '.message')
           if [ "$message" != "Cache is trash" ]; then
-            echo "Unexpected response: $response"
+            echo "To se nepovedlo: $response"
             exit 1
+          else
+            echo "Stopy zameteny"
           fi
 
       - name: 🛬 Konec mise
