@@ -4,6 +4,8 @@ parameters:
     - https://test.43vysadkovypluk.cz
     - https://43vysadkovypluk.cz
 
+  app.systemEndpointToken: "%env(SYSTEM_ENDPOINT_TOKEN)%"
+
 services:
   _defaults:
     autowire: true # Automatically injects dependencies in your services.
@@ -27,3 +29,7 @@ services:
   App\EventListener\AccessControlAllowOriginListener:
     arguments:
       $allowedOrigins: "%app.allowedOrigins%"
+
+  App\Controller\SystemController:
+    arguments:
+      $endpointToken: "%app.systemEndpointToken%"

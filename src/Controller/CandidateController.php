@@ -6,7 +6,6 @@ use App\Entity\CandidateLegacy;
 use App\Entity\CandidateChatLegacy;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Uid\Uuid;
 use Doctrine\ORM\EntityManagerInterface;

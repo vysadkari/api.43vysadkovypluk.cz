@@ -16,6 +16,7 @@ jobs:
           cp .env.prod .env
           echo "APP_SECRET=${{ secrets.APP_SECRET }}" >> .env
           echo "DATABASE_URL=${{ secrets.API_DATABASE_URL }}" >> .env
+          echo "SYSTEM_ENDPOINT_TOKEN=${{ secrets.SYSTEM_ENDPOINT_TOKEN }}" >> .env
 
       - name: 🕵️ Validace závislostí
         run: composer validate --strict
@@ -36,6 +37,10 @@ jobs:
             **/.git*/**
             **/vendor/**
             **/var/**
+
+      - name: 🧹 Zametání stop
+        run: |
+          curl -H "Authorization: Bearer ${{ secrets.SYSTEM_ENDPOINT_TOKEN }}" https://api.43vysadkovypluk.cz/system/clear-cache
 
       - name: 🛬 Konec mise
         run: echo "Bez závad"
